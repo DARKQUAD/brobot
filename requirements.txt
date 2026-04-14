@@ -1,0 +1,35 @@
+# Pipeline Qwen3 — Dépendances
+# Compatible Windows / Debian-Ubuntu / macOS  —  Python 3.10+
+# Aucun changement de code requis entre les plateformes
+
+# ── Interface graphique ────────────────────────────────────────────────────────
+customtkinter>=5.2.0
+Pillow>=10.0.0
+
+# ── Audio I/O ─────────────────────────────────────────────────────────────────
+sounddevice>=0.4.6
+soundfile>=0.12
+numpy>=1.24
+scipy>=1.10
+
+# ── Deep Learning (ASR + TTS) ─────────────────────────────────────────────────
+# CPU : torch sera installé sans GPU
+torch>=2.1.0
+torchaudio>=2.1.0
+
+# ── ASR : Qwen3-ASR-0.6B via HuggingFace Transformers ────────────────────────
+# Téléchargement automatique du modèle (~300 Mo) au premier lancement
+transformers>=4.40.0
+accelerate>=0.28.0
+
+# ── LLM : Qwen3.5-4B-Q5_K_M.gguf via llama.cpp ───────────────────────────────
+# Le fichier GGUF doit être placé dans le même dossier que app.py
+# CPU uniquement :
+llama-cpp-python>=0.2.80
+huggingface-hub
+# GPU NVIDIA (décommenter à la place de la ligne ci-dessus) :
+# CMAKE_ARGS="-DLLAMA_CUDA=on" pip install llama-cpp-python
+
+# ── TTS : Qwen3-TTS-0.6B via package officiel qwen-tts ───────────────────────
+# Téléchargement automatique du modèle (~1.5 Go) au premier lancement
+qwen-tts>=0.1.0
